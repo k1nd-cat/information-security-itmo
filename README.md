@@ -174,7 +174,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 ### Скриншот отчёта SpotBugs
 
+![spotbugs.png](results/spotbugs.png)
 
 ## Ссылка на последний успешный запуск pipeline в репозитории
 
-[Pipeline Run](https://github.com/k1nd-cat/information-security-itmo/actions/runs/18327147067)
+[Pipeline Run](https://github.com/k1nd-cat/information-security-itmo/actions/runs/18328052997)
