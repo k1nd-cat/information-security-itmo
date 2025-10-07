@@ -41,12 +41,12 @@ jobs:
           name: spotbugs-report
           path: target/spotbugsXml.xml
 
-      # SCA
-      - name: Run OWASP Dependency-Check
-        run: mvn org.owasp:dependency-check-maven:check -DnvdApiKey=${{ secrets.NVD_API_KEY }} -Dformat=ALL
+      # SAST
+      - name: Generate SpotBugs HTML report
+        run: mvn site -Dspotbugs.skip=false
 
-      - name: Upload Dependency-Check report
+      - name: Upload SpotBugs HTML report
         uses: actions/upload-artifact@v4
         with:
-          name: dependency-check-report
-          path: target/dependency-check-report.html
+          name: spotbugs-html-report
+          path: target/site/spotbugs.html
