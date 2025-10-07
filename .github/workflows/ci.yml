@@ -31,7 +31,7 @@ jobs:
       - name: Build with Maven
         run: mvn -B clean package --file pom.xml
 
-      # SAST
+      # SAST XML report
       - name: Run SpotBugs
         run: mvn com.github.spotbugs:spotbugs-maven-plugin:4.8.3.0:spotbugs -Dspotbugs.outputFormat=html
 
@@ -40,8 +40,8 @@ jobs:
         with:
           name: spotbugs-report
           path: target/spotbugsXml.xml
-
-      # SAST
+          
+      # SAST html report
       - name: Generate SpotBugs HTML report
         run: mvn site -Dspotbugs.skip=false
 
@@ -50,3 +50,13 @@ jobs:
         with:
           name: spotbugs-html-report
           path: target/site/spotbugs.html
+
+      # SCA
+      - name: Run OWASP Dependency-Check
+        run: mvn org.owasp:dependency-check-maven:check -DnvdApiKey=${{ secrets.NVD_API_KEY }} -Dformat=ALL
+
+      - name: Upload Dependency-Check report
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-check-report
+          path: target/dependency-check-report.html
