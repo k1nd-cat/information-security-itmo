@@ -167,9 +167,13 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 ```
 
-## Скриншот отчёта OWASP
+## Результаты
 
-![img.png](owasp-result/img.png)
+### Скриншот отчёта OWASP
+![img.png](results/owasp.png)
+
+### Скриншот отчёта SpotBugs
+
 
 ## Ссылка на последний успешный запуск pipeline в репозитории
 

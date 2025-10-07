@@ -33,7 +33,7 @@ jobs:
 
       # SAST
       - name: Run SpotBugs
-        run: mvn com.github.spotbugs:spotbugs-maven-plugin:4.8.3.0:spotbugs
+        run: mvn com.github.spotbugs:spotbugs-maven-plugin:4.8.3.0:spotbugs -Dspotbugs.outputFormat=html
 
       - name: Upload SpotBugs report
         uses: actions/upload-artifact@v4
