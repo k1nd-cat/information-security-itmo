@@ -24,15 +24,11 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
+                .headers(headers -> headers
+                        .addHeaderWriter((request, response) -> response.setHeader("X-XSS-Protection", "1; mode=block"))
+                        .contentSecurityPolicy(csp -> csp.policyDirectives("script-src 'self'"))
+                )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/v3/api-docs/**",
-                                "/swagger-ui.html",
-                                "/swagger-ui/**",
-                                "/swagger-ui/**",
-                                "/swagger-ui/index.html",
-                                "/webjars/**"
-                        ).permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
                         .anyRequest().authenticated()
                 )

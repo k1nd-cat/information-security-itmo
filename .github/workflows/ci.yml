@@ -43,7 +43,7 @@ jobs:
 
       # SCA
       - name: Run OWASP Dependency-Check
-        run: mvn org.owasp:dependency-check-maven:check -Dformat=ALL
+        run: mvn org.owasp:dependency-check-maven:check -DnvdApiKey=${{ secrets.NVD_API_KEY }} -Dformat=ALL
 
       - name: Upload Dependency-Check report
         uses: actions/upload-artifact@v4
