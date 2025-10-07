@@ -37,7 +37,7 @@ public class SecurityConfig {
                         .contentSecurityPolicy(csp -> csp.policyDirectives("script-src 'self'"))
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/auth/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session

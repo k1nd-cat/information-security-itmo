@@ -6,7 +6,7 @@
 
 ### Авторизация пользователя
 
-**POST** `/api/auth/login`
+**POST** `/auth/login`
 
 Аутентифицирует пользователя по логину и паролю и возвращает JWT токен доступа для работы с защищёнными ресурсами API.
 
@@ -15,8 +15,8 @@
 Формат: `application/json`
 ```json
 {
-"username": "username",
-"password": "password"
+  "username": "username",
+  "password": "password"
 }
 ```
 
@@ -35,7 +35,7 @@
 
 ### Регистрация пользователя
 
-**POST** `/api/auth/register`
+**POST** `/auth/register`
 
 Регистрирует пользователя по логину и паролю и возвращает JWT токен доступа для работы с защищёнными ресурсами API.
 
@@ -44,8 +44,8 @@
 Формат: `application/json`
 ```json
 {
-"username": "username",
-"password": "password"
+  "username": "username",
+  "password": "password"
 }
 ```
 
@@ -64,7 +64,7 @@
 
 ### Получение списка товаров
 
-**GET** `/api/data`
+**GET** `/data`
 
 Возвращает пагинированный список товаров.
 
@@ -157,7 +157,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 Пример [SecurityConfig.java](src/main/java/com/k1ndcat/lab1/config/SecurityConfig.java):
 ```java
 .authorizeHttpRequests(auth -> auth
-        .requestMatchers("/api/auth/**").permitAll()
+        .requestMatchers("/auth/**").permitAll()
         .anyRequest().authenticated()
 )
 .sessionManagement(session -> session
@@ -176,6 +176,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 ![spotbugs.png](results/spotbugs.png)
 
-## Ссылка на последний успешный запуск pipeline в репозитории
+## Ссылка на успешный запуск pipeline в репозитории
 
 [Pipeline Run](https://github.com/k1nd-cat/information-security-itmo/actions/runs/18328052997)
